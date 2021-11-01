@@ -59,7 +59,7 @@ public class MovePlayer : MonoBehaviour {
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
     }
 
-        private void RunDiagonal() {
+    private void RunDiagonal() {
         Run();
         float speedScale = .7f;
         body.velocity = new Vector2((horizontal * runSpeed) * speedScale, (vertical * runSpeed) * speedScale);
