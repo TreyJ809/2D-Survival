@@ -23,10 +23,6 @@ public class PlayerHealth : Health
     public override void TakeDamage(int d) {
         base.TakeDamage(d);
         UpdatePlayerHealthDisplay();
-
-        if (currentHealth <= 0) {
-            mothership.EndGame();
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -38,5 +34,9 @@ public class PlayerHealth : Health
 
     private void UpdatePlayerHealthDisplay() {
         playerHealthDisplay.UpdatePlayerHealthDisplay(currentHealth, maxHealth);
+    }
+
+    public override void Die() {
+        mothership.EndGame();
     }
 }
