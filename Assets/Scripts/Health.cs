@@ -41,7 +41,6 @@ public abstract class Health : MonoBehaviour
     }
 
     public virtual void TakeDamage(int d) {
-        //TODO: take d amount of damage
         currentHealth -= d;
         if (currentHealth <= 0) {
             Die();

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// Timer shown at top of screen indicating time played
 public class TimerMesh : MonoBehaviour {
 
     private float timeElapsed;

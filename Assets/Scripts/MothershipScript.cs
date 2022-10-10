@@ -8,6 +8,7 @@ public class MothershipScript : MonoBehaviour
     System.Random rnd;
 
     private bool gameOver;
+    private bool paused;
 
     public float spawnDelay;
 
@@ -24,11 +25,14 @@ public class MothershipScript : MonoBehaviour
     void Awake() {
         rnd = new System.Random();
         gameOver = true;
+        paused = false;
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Tab)) {
+            TogglePause();
+        }
     }
 
     public System.Random GetRandom() {
@@ -52,6 +56,29 @@ public class MothershipScript : MonoBehaviour
         SetGameOver(false);
     }
 
+    private void PauseGame() {
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+        paused = true;
+    }
+    private void UnpauseGame() {
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+        paused = false;
+    }
+
+    public void TogglePause() {
+        if (paused) {
+            UnpauseGame();
+        } else {
+            PauseGame();
+        }
+    }
+
+    public bool IsPaused() {
+        return paused;
+    }
+
     public float GetDelayInterval() {
         return spawnDelay;
     }
@@ -59,5 +86,7 @@ public class MothershipScript : MonoBehaviour
     public List<GameObject> GetSausagesTypes() {
         return sausageTypes;
     }
+
+    
 
 }
